@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Produtos</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1 class="tittle">Lista de Produtos</h1>
+    <p>Esse mercadinho foi criado para ajudar os pequenos comerciantes para colocar seus produtos a venda e divulgar seus serviços</p>
+    <a href="/adicionar">Adicionar Produto</a>
+    <ul>
+        {% for produto in produtos %}
+            <li>{{ produto.nome }} - {{ produto.descricao }} - R$ {{ produto.preco }} - {{ produto.data_criacao }}
+                <a href="/editar/{{ produto.id }}">Editar</a>
+                <a href="/excluir/{{ produto.id }}">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
